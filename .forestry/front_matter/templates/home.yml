@@ -14,4 +14,4 @@ fields:
     schema:
       format: html
 pages:
-- portfolio/index.md
+- site/index.md

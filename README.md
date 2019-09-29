@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="portfolio/.vuepress/public/upload/logo.svg" height="64">
+  <img src="site/.vuepress/public/upload/logo.svg" height="64">
   <h3 align="center">VuePress Portfolio</h3>
   <p align="center">VuePress site with portfolio and blogging pages<br>ready to deploy, and configured for Forestry (Content Management)<p>
 </p>
@@ -32,7 +32,7 @@ Import your site in Netlify
 
 1. Create a new site in Netlify and import your repository.
 2. Set the build command to: `npm run site:build`
-3. Set the publish directory to `portfolio/.vuepress/dist`
+3. Set the publish directory to `site/.vuepress/dist`
 
 That's it, now your site gets deployed automatically on `git push`
 

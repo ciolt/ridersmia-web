@@ -31,7 +31,7 @@ Now, push it up to your remote git repository.
 
 1. Create a new site in Netlify and import your repository.
 2. Set the build command to: `npm run site:build`
-3. Set the publish directory to `portfolio/.vuepress/dist`
+3. Set the publish directory to `site/.vuepress/dist`
 
 ### Manage your content with Forestry
 
