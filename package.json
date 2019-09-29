@@ -1,13 +1,12 @@
 {
-  "name": "portfolio-vuepress",
+  "name": "ridersalliance-web",
   "scripts": {
-    "site:build": "vuepress build portfolio",
-    "site:develop": "vuepress dev portfolio -p 8080 -h 0.0.0.0"
+    "site:build": "vuepress build site",
+    "dev": "vuepress dev site"
   },
-  "author": "Nichlas W. Andersen",
+  "author": "The Riders Alliance",
   "license": "MIT",
   "dependencies": {
-    "vuepress": "^0.14.1",
-    "webpack-dev-middleware": "3.6.0"
+    "vuepress": "^1.1.0"
   }
 }
