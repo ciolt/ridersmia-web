@@ -4,4 +4,5 @@ title: Posts
 blog_index: true
 heroText: Posts
 ---
-<BlogList />
+Nothing here yet.
+<!-- <BlogList /> -->

@@ -131,12 +131,6 @@
     padding-top: 0;
   }
 
-  .blog-list, .single-blog {
-    width: 800px;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
   .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
       font-weight: 600;
       line-height: 1.2;

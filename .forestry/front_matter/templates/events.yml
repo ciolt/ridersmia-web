@@ -9,9 +9,25 @@ fields:
   type: text
   config:
     required: true
+- name: date
+  label: Start Date
+  hidden: false
+  type: datetime
+  config:
+    required: true
+- name: until_date
+  label: End Date
+  hidden: false
+  type: datetime
+  config:
+    required: false
 - type: file
   name: thumbnail
-  label: Thumbnail
+  label: Image
+- type: text
+  name: location
+  label: Address
+  description: Physical address of location (i.e. 111 NW 1st St, Miami, FL 33128)
 - type: select
   name: categories
   description: Transportation categories related to this event
@@ -24,14 +40,13 @@ fields:
       - "bus"
       - "train" # Metrorail/Tri-Rail/Brightline
       - "infra" # Roads/Lanes/Bridges
-- name: date
-  label: Date
-  hidden: false
-  type: datetime
-  config:
-    required: true
 - type: boolean
   name: rsvp
   hidden: false
   default: false
   label: Needs RSVP?
+- type: text
+  name: rsvp_url
+  hidden: false
+  label: RSVP link
+  description: Leave blank if no RSVP link, provide instructions in event description

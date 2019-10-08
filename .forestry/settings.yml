@@ -10,15 +10,15 @@ sections:
   templates:
   - settings
 - type: directory
-  path: site/works
-  label: Works
+  path: site/events
+  label: Events
   create: all
-  match: "**/*"
+  match: "**/[!index]*"
   templates:
-  - works
+  - events
 - type: directory
   path: site/blog
-  label: Blog
+  label: Posts
   create: all
   match: "**/[!index]*"
   templates:
