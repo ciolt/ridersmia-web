@@ -1,85 +1,15 @@
-<template>
-  <header
-    class="header"
-    :style="sticky && {
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      width: '100%',
-    }"
-  >
-
-    <nav v-if="navLinks" class="navigation left desktop-nav">
-      <ul>
-        <router-link
-          v-for="nav in navLinks"
-          :key="nav.text"
-          v-if="nav.position === 'left' && !nav.external"
-          tag="li"
-          :to="nav.link"
-          active-class="active"
-          v-text="nav.text"
-          exact
-        />
-        <li v-for="nav in navLinks" v-if="nav.position === 'left' && nav.external">
-          <a :href="nav.link" target="_blank">{{ nav.text }}</a>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="brand">
-      <router-link to="/">
-        <div
-          v-if="logo"
-          class="logo"
-          :style="{ backgroundImage: `url(${logo})`}"
-          :title="$site.title"
-        />
-        <span v-else>{{ $site.title }}</span>
-      </router-link>
-    </div>
-
-    <nav v-if="navLinks" class="navigation right desktop-nav">
-      <ul>
-        <router-link
-          v-for="nav in navLinks"
-          :key="nav.text"
-          v-if="nav.position === 'right' && !nav.external"
-          tag="li"
-          :to="nav.link"
-          active-class="active"
-          v-text="nav.text"
-          exact
-        />
-        <li v-for="nav in navLinks" v-if="nav.position === 'right' && nav.external">
-          <a :href="nav.link" target="_blank">{{ nav.text }}</a>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="mobile-nav-toggle" @click="toggleMobileNav" />
-    <div class="mobile-nav" :class="{'mobile-nav--active': mobileNavActive}">
-      <nav>
-        <ul @click="toggleMobileNav">
-          <router-link
-            v-for="nav in navLinks"
-            :key="nav.text"
-            v-if="!nav.external"
-            tag="li"
-            :to="nav.link"
-            active-class="active"
-            v-text="nav.text"
-            exact
-          />
-          <li v-for="nav in navLinks" v-if="nav.external" @click="toggleMobileNav">
-            <a :href="nav.link" target="_blank">{{ nav.text }}</a>
-          </li>
-        </ul>
-        <div class="mobile-nav-close" @click="toggleMobileNav" />
-      </nav>
-    </div>
-
-  </header>
+<template lang="pug">
+  header.header(:class='{ fullmode: fullmode }')
+    .inner-head
+      router-link(to='/')
+        .logo
+          img.logo-img(:src='fullmode ? "/upload/logotype-inverse.svg" : "/upload/logotype.svg"' width='200' :title='$site.title' :alt='$site.title')
+      nav.navigation(v-if='navLinks')
+        ul
+          li(v-for='nav in navLinks', :key='nav.text')
+            router-link.nav-link(tag='a', :to='nav.link', active-class='active', v-text='nav.text', exact='',
+              :class="{ active: $route.path.indexOf(nav.link) !== -1 }")
+    .clearfix
 </template>
 
 <script>
@@ -92,161 +22,104 @@
       sticky: {
         type: Boolean,
         required: false,
+      },
+      fullmode: {
+        type: Boolean,
+        required: false
       }
     },
     data() {
-      return {
-        mobileNavActive: false
-      }
+      return {}
     },
     computed: {
       navLinks() {
         return this.$site.themeConfig.nav
       },
-    },
-    methods: {
-      toggleMobileNav() {
-        this.mobileNavActive = !this.mobileNavActive
-      }
     }
   }
 </script>
 
 <style scoped>
-
+  .clearfix {
+    width: 100%;
+    clear: both;
+    height: 0;
+  }
   .header {
-    display: flex;
+    color: #FFFFFF;
     position: relative;
-    align-items: center;
-    justify-content: space-between;
-    height: 6rem;
-    padding: 5vw;
-    font-size: 0.8rem;
-    font-weight: 600;
-    z-index: 10;
+    padding: 1.65rem 2rem 2rem 2rem;
   }
-
-  .logo {
-    position: absolute;
-    width: 3rem;
-    height: 3rem;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-  }
-
-  .navigation li {
-    display: inline-block;
-    list-style: none;
-    margin-right: 1rem;
-    user-select: none;
-    cursor: pointer;
-    border-bottom: 1px solid transparent;
-  }
-
-  .navigation li:last-of-type {
-    margin: 0;
-  }
-
-  .navigation li:hover {
-    border-bottom: 1px solid #000;
-  }
-
-  .active {
-    border-bottom: 1px solid #000;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  a:active { color: inherit; }
-  a:visited { color: inherit; }
-
-  .desktop-nav {
-    display: none;
-  }
-
-  .mobile-nav {
+  .logo-img {
     display: block;
+    margin: 0;
+    width: 110px;
+    max-width: 80%;
+  }
+  .inner-head {
+    max-width: 950px;
+    margin: 0 auto;
+  }
+  .left-section {
+    float: left;
+  }
+  .right-section {
+    float: right;
+  }
+  nav ul {
+    list-style: none;
+    margin: 10pt 0 0 0;
+  }
+  nav ul li {
+    display: inline-block;
+    margin: 4pt 1.2rem 0 0;
+    font-size: 1.2rem;
+    color: #393939;
+  }
+  .nav-link, .nav-link:visited {
+    font-weight: 600;
+    /* text-transform: uppercase; */
+    font-size: 0.8em;
+    color: inherit;
+    text-decoration: none;
+    padding-bottom: 1pt;
+    letter-spacing: 0.025em;
+    border-bottom: 1pt solid transparent; /* #CCC */
+  }
+
+  .fullmode .nav-link, .fullmode .nav-link:visited {
+    border-bottom-color: #ff85b6;
+    color: #ffb3d1;
+  }
+
+  .fullmode .nav-link:hover, .fullmode .nav-link:active, .fullmode .nav-link.active, .fullmode .nav-link.active2 {
+    color: #FFFFFF;
+  }
+  
+  .nav-link:hover, .nav-link:active, .nav-link.active, .nav-link.active2 {
+    color: #ea005e;
+  }
+  .nav-link:active {
+    color: #2B2B2B;
+  }
+  .nav-link.active {
+    border-bottom-color: currentColor;
+  }
+
+  /* .header:before {
+    content: '';
     position: absolute;
-    background: #ffffff;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    padding: 2rem;
-    transform: translateY(-100%);
-    transition: transform 0.35s ease-in-out;
-    text-align: center;
-    font-size: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 2;
-  }
-
-  .mobile-nav li {
-    list-style: none;
-    cursor: pointer;
-    transition: opacity 0.15s;
-  }
-
-  .mobile-nav li:hover {
-    opacity: 0.6;
-  }
-
-  .mobile-nav--active {
-    transform: translateY(0);
-  }
-
-  .mobile-nav-close {
-    position: absolute;
-    content: '';
     right: 0;
-    top: 0;
-    width: 3rem;
-    height: 3rem;
-    padding: 3rem;
-    background-image: url('/close.svg');
-    background-position: center;
-    background-size: 1.5rem;
-    background-repeat: no-repeat;
-    transition: opacity 0.15s;
-    cursor: pointer;
-  }
-
-  .mobile-nav-toggle {
+    width: 100%;
     display: block;
-    width: 3rem;
-    height: 3rem;
-    background-image: url('/burger.svg');
-    background-position: center;
-    background-size: 1.5rem;
-    background-repeat: no-repeat;
-    transition: opacity 0.15s;
-    cursor: pointer;
+    height: 3pt;
+    background-color: #ea005e;
   }
 
-  .mobile-nav-toggle:hover,
-  .mobile-nav-close:hover {
-    opacity: 0.6;
-  }
-
-  @media screen and (min-width: 600px) {
-    .desktop-nav {
-      display: block;
-    }
-    .mobile-nav-toggle {
-      display: none;
-    }
-    .mobile-nav {
-      display: none;
-    }
-  }
-
+  .fullmode .header:before {
+    background-color: #000;
+  } */
+  
 </style>

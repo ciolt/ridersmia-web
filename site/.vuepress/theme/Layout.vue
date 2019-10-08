@@ -1,61 +1,45 @@
-<template>
-  <div class="wrapper">
-
-    <Navbar :logo="$site.themeConfig.logo" :sticky="$route.path === '/'" />
-
-    <div class="container">
-
-      <!-- Works list -->
-      <div
-        v-if="$route.path === '/'"
-        :style="{
-          marginTop: '14vw'
-        }"
-      >
-        <Content/>
-      </div>
-
-      <!-- Single project view -->
-      <div v-if="isSingleProject">
-        <SingleProjectHeader
-          :title="$page.frontmatter.title"
-          :year="$page.frontmatter.year.toString()"
-          :categories="$page.frontmatter.categories"
-        />
-        <Content/>
-      </div>
-
-      <!-- Journal list -->
-      <div v-if="$route.path === '/journal/'" class="journal-list">
-        <Content />
-      </div>
-
-      <!-- Single journal -->
-      <div v-if="isSingleJournal" class="single-journal">
-        <Content/>
-      </div>
-
-    </div>
-
-    <Footer />
-
-  </div>
+<template lang="pug">
+  .wrapper
+    .nav-wrapper(:class="{ fullmode: !!$page.frontmatter.full }")
+      Navbar(:logo='$site.themeConfig.logo', :sticky="$route.path === '/'", :fullmode="!!$page.frontmatter.full")
+      //- For pages with specified Hero Text
+      Hero(v-if='!!$page.frontmatter.heroText' :showbg="$page.frontmatter.showBg" :fullmode="!!$page.frontmatter.full" :text='$page.frontmatter.heroText')
+      //- For single events
+      Hero(v-if='isSingleEvent' :fullmode="false" :text="$page.frontmatter.title")
+    .container
+      .inner-contain
+        div(v-if="$route.path === '/events/'")
+          Content
+        //- Single event view
+        div(v-if='isSingleEvent')
+          p
+            small {{ new Date($page.frontmatter.date).toLocaleString() }}
+          Content
+        //- Blog list
+        .blog-list(v-if="$route.path === '/blog/'")
+          Content
+        //- Single blog
+        .single-blog(v-if='isSingleBlog')
+          Content
+        div(v-if="$page.frontmatter.render_content === true")
+          Content
+    Footer
 </template>
 
 <script>
   export default {
     computed: {
-      isSingleProject() {
-        const worksRoute = '/works/'
+      isSingleEvent() {
+        const worksRoute = '/events/'
         const path = this.$route.path
-        if (path.includes('works') && path.length >= (worksRoute.length + 1)) {
+        if (path.includes('events') && path.length >= (worksRoute.length + 1)) {
           return true
         }
       },
-      isSingleJournal() {
-        const journalRoute = '/journal/'
+      isSingleBlog() {
+        const blogRoute = '/blog/'
         const path = this.$route.path
-        if (path.includes('journal') && path.length >= (journalRoute.length + 1)) {
+        if (path.includes('blog') && path.length >= (blogRoute.length + 1)) {
           return true
         }
       }
@@ -108,11 +92,18 @@
     color: var(--color-black);
   }
 
+  html {
+    background-color: #FFFFFF;
+    /* background-color: #ECEFF1; */
+    /* background-image: linear-gradient(90deg, #FAFAFA, 50%, #ECEFF1, 100%); */
+  }
+
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
-    font-size: 16px;
-    background: #fff;
+    font-family: "Metropolis", "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 1.5rem;
+    min-height: 100%;
     color: var(--color-black);
+    background-color: transparent;
   }
 
   img {
@@ -123,43 +114,49 @@
   }
 
   .container {
-    padding: 0 5vw;
+    padding: 1rem 2rem;
   }
 
-  .journal-list, .single-journal {
+  .inner-contain {
+    max-width: 950px;
+    margin: 0 auto;
+  }
+
+  .nav-wrapper.fullmode {
+    background-color: #ea005e;
+    background-image: linear-gradient(45deg, #e3008c, #e74856);
+  }
+
+  .container.full-mode {
+    padding-top: 0;
+  }
+
+  .blog-list, .single-blog {
     width: 800px;
     max-width: 100%;
     margin: 0 auto;
   }
 
-  h1,h2,h3,h4,h5,h6,p {
-    width: 100%;
-    max-width: 800px;
+  .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+      font-weight: 600;
+      line-height: 1.2;
+      margin-top: 0;
+      margin-bottom: 8px;
+      margin-bottom: .5rem;
   }
 
-  h1 {
-    font-size: 3rem;
-    line-height: 1.15;
-    font-weight: 300;
-    margin: 0 auto 3rem auto;
+  .h4,h4 {
+      font-size: 24px;
+      font-size: 1.5rem
   }
-
-  h2 {
-    font-size: 2rem;
-    font-weight: 300;
-    margin: 2rem auto 2rem auto;
+  .h1,h1 {
+      font-size: 40px;
+      font-size: 2.5rem
   }
-
-  h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 2rem auto 1rem auto;
-  }
-
+  
   p {
-    font-size: 1rem;
     line-height: 1.5;
-    margin: 1rem auto 2rem auto;
+    margin: 1rem auto 1rem auto;
   }
 
   pre {
@@ -171,7 +168,7 @@
   code {
     color: white;
     background: var(--color-black);
-    font-size: 0.8rem;
+    font-size: 1rem;
     padding: 0.05rem 0.25rem;
     font-weight: 400;
   }

@@ -1,5 +1,5 @@
 ---
-label: journal
+label: blog
 hide_body: false
 fields:
 - name: title
@@ -19,3 +19,11 @@ fields:
   type: datetime
   config:
     required: true
+- type: file
+  name: banner
+  label: Header Image
+  description: Provide a banner image for this post (max 4MB)
+  hidden: false
+  config:
+    required: false
+    maxSize: 4

@@ -17,12 +17,12 @@ sections:
   templates:
   - works
 - type: directory
-  path: site/journal
-  label: Journal
+  path: site/blog
+  label: Blog
   create: all
   match: "**/[!index]*"
   templates:
-  - journal
+  - blog
 - type: heading
   label: Data
 - type: document

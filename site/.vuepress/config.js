@@ -9,7 +9,8 @@ module.exports = {
     nav: config.navigation,
   },
   head: [
-    ['link', { rel: "icon", href: config.favicon }]
+    ['link', { rel: "icon", href: config.favicon }],
+    ['link', { rel: "stylesheet", href: '/fonts/stylesheet.css' }]
   ],
   markdown: {
     anchor: {

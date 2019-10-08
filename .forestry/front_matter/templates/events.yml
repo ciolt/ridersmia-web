@@ -1,0 +1,37 @@
+---
+label: events
+hide_body: false
+fields:
+- name: title
+  default: ''
+  label: Title
+  hidden: false
+  type: text
+  config:
+    required: true
+- type: file
+  name: thumbnail
+  label: Thumbnail
+- type: select
+  name: categories
+  description: Transportation categories related to this event
+  label: Modes
+  config:
+    source:
+      type: custom
+    options:
+      - "bike"
+      - "bus"
+      - "train" # Metrorail/Tri-Rail/Brightline
+      - "infra" # Roads/Lanes/Bridges
+- name: date
+  label: Date
+  hidden: false
+  type: datetime
+  config:
+    required: true
+- type: boolean
+  name: rsvp
+  hidden: false
+  default: false
+  label: Needs RSVP?

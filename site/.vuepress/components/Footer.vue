@@ -1,12 +1,30 @@
-<template>
-  <span class="text">{{ $site.themeConfig.footer }}</span>
+<template lang="pug">
+  footer
+    .inner-footer
+      span.text {{ $site.themeConfig.footer }}
+      .fl-right
+        .soc-icon
+          a.twitter(href="https://www.twitter.com/ridersmia" title="Twitter @ridersmia")
 </template>
 
 <style scoped>
+  footer {
+    padding: 2rem 0;
+  }
+  .inner-footer {
+    max-width: 950px;
+    padding: 1rem 0;
+    border-top: 1pt solid #CCCCCC;
+    margin: 0 auto;
+  }
+@media (max-width: 970px) {
+  .inner-footer {
+    padding: 1rem 2rem;
+  }
+}
+
   .text {
-    display: block;
     font-size: 0.8rem;
-    text-align: left;
-    padding: 4rem 5vw;
+    color: #767676;
   }
 </style>
