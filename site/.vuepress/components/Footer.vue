@@ -54,6 +54,7 @@
 }
 
 .fl-left {
+  margin-top: 1rem;
     float: none;
 }
 }
