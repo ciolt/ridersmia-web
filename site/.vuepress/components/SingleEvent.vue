@@ -30,6 +30,9 @@
         dateSep: ' &#8211;'
       }
     },
+    mounted() {
+      require('../lib/date-polyfill')(window)
+    },
     computed: {
       eventLocation() {
         return this.$page.frontmatter.location
@@ -109,6 +112,10 @@
     .single-event {
         flex-direction: column;
     }
+}
+
+.right-sec {
+  max-width: 635px;
 }
 
 p, .right-sec p, .ncfp p {

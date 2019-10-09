@@ -14,6 +14,9 @@
     props: {
       events: Array
     },
+    mounted() {
+      require('../lib/date-polyfill')(window)
+    },
     methods: {
       formatTime (rawdate) {
         const dt = new Date(rawdate)
