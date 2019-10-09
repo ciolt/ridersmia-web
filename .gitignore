@@ -1,3 +1,4 @@
-node_modules
+node_modules/
 
-.vuepress/dist
+site/.vuepress/dist/
+dist/

@@ -1,5 +1,5 @@
 <template lang="pug">
-  .impress-parent(:class="{ selfcontained: !fullmode }")
+  .impress-parent(:class="{ selfcontained: !fullmode, plainhero: plain }")
     .mcontain
       h1.impress.title(v-if="text" v-html="processText(text)")
     style(v-if="showbg")
@@ -14,7 +14,8 @@ export default {
       required: false
     },
     fullmode: Boolean,
-    showbg: String
+    showbg: String,
+    plain: Boolean
   },
   methods: {
     processText(tex) {
@@ -36,6 +37,11 @@ export default {
     padding: 2rem 2rem;
     background-color: #ea005e;
     background-image: linear-gradient(45deg, #e3008c, #e74856);
+  }
+
+  .impress-parent.plainhero , .impress-parent.plainhero.selfcontained {
+    padding: 0 2rem;
+    background: transparent;
   }
 
   .impress-parent.selfcontained:after {
@@ -62,11 +68,15 @@ export default {
     max-width: 950px;
     margin: 0 auto;
     z-index: 10;
-    padding: 0 2rem;
+    /* padding: 0 2rem; */
   }
 
   .impress-parent.selfcontained .mcontain {
     padding: 0;
+  }
+
+  .impress-parent.plainhero .impress, .impress-parent.plainhero.selfcontained .impress {
+    color: inherit;
   }
 
   .impress{

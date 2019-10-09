@@ -5,16 +5,14 @@
       //- For pages with specified Hero Text
       Hero(v-if='!!$page.frontmatter.heroText' :showbg="$page.frontmatter.showBg" :fullmode="!!$page.frontmatter.full" :text='$page.frontmatter.heroText')
       //- For single events
-      Hero(v-if='isSingleEvent' :fullmode="false" :text="$page.frontmatter.title")
+      Hero(v-if='isSingleEvent' :fullmode="false" :plain="true" :text="$page.frontmatter.title")
     .container
       .inner-contain
         div(v-if="$route.path === '/events/'")
           Content
         //- Single event view
         div(v-if='isSingleEvent')
-          p
-            small {{ new Date($page.frontmatter.date).toLocaleString() }}
-          Content
+          SingleEvent
         //- Blog list
         .blog-list(v-if="$route.path === '/blog/'")
           Content
@@ -28,7 +26,20 @@
 
 <script>
   export default {
+    metaInfo() {
+      return {
+        title: this.$title,
+        // all titles will be injected into this template
+        titleTemplate: (titleChunk) => {
+          if (this.$page.frontmatter.metaTitle != null) return this.$page.frontmatter.metaTitle
+          return titleChunk ? `${titleChunk} | The Riders Alliance` : 'The Riders Alliance';
+        }
+      }
+    },
     computed: {
+      pageTitle() {
+        return this.$page.frontmatter.metaTitle || this.$page.frontmatter.metaTitle || 'Untitled Page'
+      },
       isSingleEvent() {
         const worksRoute = '/events/'
         const path = this.$route.path
@@ -148,8 +159,13 @@
       font-size: 2.5rem
   }
   
+  h1, h2, h3, h4, h5, h6, p {
+    max-width: initial;
+  }
+
   p {
     line-height: 1.5;
+    font-size:1.5rem;
     margin: 1rem auto 1rem auto;
   }
 
@@ -165,6 +181,15 @@
     font-size: 1rem;
     padding: 0.05rem 0.25rem;
     font-weight: 400;
+  }
+
+  a, a:active {
+    color: #ea005e;
+    text-decoration: none;
+  }
+
+  .ncfp p:first-of-type {
+    margin-top: 0;
   }
 
 </style>

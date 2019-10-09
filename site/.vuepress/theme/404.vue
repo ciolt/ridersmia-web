@@ -1,51 +1,28 @@
 <template lang="pug">
   .wrapper
-    Navbar(:logo='$site.themeConfig.logo', :sticky="$route.path === '/'")
+    .nav-wrapper(:class="{ fullmode: true }")
+      Navbar(:logo='$site.themeConfig.logo', :sticky="$route.path === '/'", :fullmode="true")
+      Hero(:fullmode="true" :plain="false" :text="text404")
     .container
-      h1 This page does not exist.
-      p
-        small
-          | Were you looking for something? Email us at 
-          a(href='mailto:help@riders.miami') help@riders.miami
-          |  with any questions.
+      .inner-contain
+        p
+          small
+            | Were you looking for something? Email us at 
+            a(href='mailto:help@riders.miami') help@riders.miami
+            |  with any questions.
     Footer
 </template>
 
 <script>
   export default {
-    computed: {
-      isSingleEvent() {
-        const worksRoute = '/events/'
-        const path = this.$route.path
-        if (path.includes('events') && path.length >= (worksRoute.length + 1)) {
-          return true
-        }
-      },
-      isSingleBlog() {
-        const blogRoute = '/blog/'
-        const path = this.$route.path
-        if (path.includes('blog') && path.length >= (blogRoute.length + 1)) {
-          return true
-        }
+    metaInfo: {
+      title: '404 | The Riders Alliance'
+    },
+    data() {
+      return {
+        text404: 'This page does not exist.'
       }
-    },
-    updated() {
-        // unwrap all images from paragraph tags so we can have
-        // different widths inside the content.
-
-        document.querySelectorAll('p img').forEach(image => {
-          var wrapper = image.parentNode
-          let children = wrapper.children
-          let fragment = document.createDocumentFragment()
-
-          Array.from(children).forEach(child => {
-            fragment.appendChild(child)
-          })
-
-          wrapper.parentNode.replaceChild(fragment, wrapper)
-
-        })
-    },
+    }
   }
 </script>
 
@@ -77,11 +54,18 @@
     color: var(--color-black);
   }
 
+  html {
+    background-color: #FFFFFF;
+    /* background-color: #ECEFF1; */
+    /* background-image: linear-gradient(90deg, #FAFAFA, 50%, #ECEFF1, 100%); */
+  }
+
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
-    font-size: 16px;
-    background: #fff;
+    font-family: "Metropolis", "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 1.5rem;
+    min-height: 100%;
     color: var(--color-black);
+    background-color: transparent;
   }
 
   img {
@@ -92,43 +76,43 @@
   }
 
   .container {
-    padding: 0 5vw;
+    padding: 1rem 2rem;
   }
 
-  .blog-list, .single-blog {
-    width: 800px;
-    max-width: 100%;
+  .inner-contain {
+    max-width: 950px;
     margin: 0 auto;
   }
 
-  h1,h2,h3,h4,h5,h6,p {
-    width: 100%;
-    max-width: 800px;
+  .nav-wrapper.fullmode {
+    background-color: #ea005e;
+    background-image: linear-gradient(45deg, #e3008c, #e74856);
   }
 
-  h1 {
-    font-size: 3rem;
-    line-height: 1.15;
-    font-weight: 300;
-    margin: 0 auto 3rem auto;
+  .container.full-mode {
+    padding-top: 0;
   }
 
-  h2 {
-    font-size: 2rem;
-    font-weight: 300;
-    margin: 2rem auto 2rem auto;
+  .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+      font-weight: 600;
+      line-height: 1.2;
+      margin-top: 0;
+      margin-bottom: 8px;
+      margin-bottom: .5rem;
   }
 
-  h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 2rem auto 1rem auto;
+  .h4,h4 {
+      font-size: 24px;
+      font-size: 1.5rem
   }
-
+  .h1,h1 {
+      font-size: 40px;
+      font-size: 2.5rem
+  }
+  
   p {
-    font-size: 1rem;
     line-height: 1.5;
-    margin: 1rem auto 2rem auto;
+    margin: 1rem auto 1rem auto;
   }
 
   pre {
@@ -140,9 +124,18 @@
   code {
     color: white;
     background: var(--color-black);
-    font-size: 0.8rem;
+    font-size: 1rem;
     padding: 0.05rem 0.25rem;
     font-weight: 400;
+  }
+
+  a, a:active {
+    color: #ea005e;
+    text-decoration: none;
+  }
+
+  .ncfp p:first-of-type {
+    margin-top: 0;
   }
 
 </style>

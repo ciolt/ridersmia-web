@@ -59,7 +59,8 @@
 }
 
 .event-header {
-    float: left;
+    display: inline-block;
+    width: auto;
 }
 
 .event-title {

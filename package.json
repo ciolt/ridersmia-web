@@ -1,7 +1,7 @@
 {
   "name": "ridersalliance-web",
   "scripts": {
-    "site:build": "vuepress build site",
+    "build": "vuepress build site",
     "dev": "vuepress dev site"
   },
   "author": "The Riders Alliance",
@@ -9,6 +9,7 @@
   "dependencies": {
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
-    "vuepress": "^1.1.0"
+    "vue-meta": "^2.3.0",
+    "vuepress": "https://github.com/cscape/vp.git"
   }
 }
