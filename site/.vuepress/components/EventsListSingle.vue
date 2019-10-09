@@ -9,6 +9,7 @@
 </template>
 
 <script>
+  const locale = 'en-US'
   export default {
     props: {
       events: Array
@@ -16,14 +17,7 @@
     methods: {
       formatTime (rawdate) {
         const dt = new Date(rawdate)
-        const minutes = dt.getMinutes()
-        let hours = dt.getHours()
-        let ampm = 'AM'
-        if (hours >= 12) {
-          hours = (dt.getHours() - 12) || 12
-          ampm = 'PM'
-        }
-        return `${hours}:${minutes} ${ampm}`
+        return dt.toLocaleString(locale, { hour: 'numeric', minute: '2-digit', hour12: true })
       },
       formatDate (rawdate) {
         const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',

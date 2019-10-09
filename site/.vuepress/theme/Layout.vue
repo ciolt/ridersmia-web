@@ -166,7 +166,14 @@
   p {
     line-height: 1.5;
     font-size:1.5rem;
+    word-wrap: break-word;
+    word-break: break-word;
     margin: 1rem auto 1rem auto;
+  }
+
+  .small-p p {
+    font-size: 1.125rem;
+    word-break: break-word;
   }
 
   pre {

@@ -1,11 +1,19 @@
 <template lang="pug">
   .single-event
     .left-sec
-      .date-time
+      .date-time.nop.small-p
         b.h4 Date and time
-        p(v-html="getCondenseDateTime(eventDate) + (!!endDate ? dateSep : '')")
+        p(v-html="getCondenseDateTime(eventDate) + (endDate != null ? dateSep : '')")
         p(v-if="endDate" v-html="getCondenseDateTime(endDate) + ' ' + getTZ(endDate)")
-    .right-sec.ncfp
+      .location.nop.small-p
+        b.h4 Location
+        p(v-html="eventLocation")
+      .rsvp.nop.small-p(v-if="rsvp")
+        b.h4 RSVP
+        p This event requires an RSVP.
+        p
+          a(:href="rsvp") Register
+    .right-sec.ncfp.small-p
       Content
 </template>
 
@@ -19,17 +27,22 @@
     },
     data() {
       return {
-        dateSep: ` &#8211;`
+        dateSep: ' &#8211;'
       }
     },
     computed: {
+      eventLocation() {
+        return this.$page.frontmatter.location
+      },
+      rsvp() {
+        return !!(this.$page.frontmatter.rsvp) ? this.$page.frontmatter.rsvp_url : null
+      },
       eventDate() {
         return new Date(this.$page.frontmatter.date)
       },
       endDate() {
-        return this.eventDate
         const ut = this.$page.frontmatter.until_date
-        if (ut != null && String(ut).trim().length > 0) {
+        if (ut) {
           return new Date(ut)
         } else return null
       }
@@ -79,8 +92,12 @@
     margin: 0 1rem 1rem 0;
 }
 
-.date-time p {
+.nop {
   font-size: 1.125rem;
+  margin: 0 0 1rem 0;
+}
+
+.nop p {
   margin: 0;
 }
 
@@ -94,7 +111,10 @@
     }
 }
 
-p, .right-sec p {
+p, .right-sec p, .ncfp p {
     margin-top: 0;
+    font-size: 1.125rem;
+    margin: 1rem auto;
+    word-break: break-word;
 }
 </style>
