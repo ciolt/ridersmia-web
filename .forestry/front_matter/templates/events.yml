@@ -36,10 +36,10 @@ fields:
     source:
       type: custom
     options:
-      - "bike"
-      - "bus"
-      - "train" # Metrorail/Tri-Rail/Brightline
-      - "infra" # Roads/Lanes/Bridges
+    - bike
+    - bus
+    - train
+    - infra
 - type: boolean
   name: rsvp
   hidden: false
