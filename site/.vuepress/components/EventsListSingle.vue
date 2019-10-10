@@ -9,25 +9,20 @@
 </template>
 
 <script>
-  const locale = 'en-US'
+  import moment from 'moment'
+
   export default {
     props: {
       events: Array
     },
     methods: {
       formatTime (rawdate) {
-        const dt = new Date(rawdate)
-        return dt.toLocaleString(locale, { hour: 'numeric', minute: '2-digit', hour12: true })
+        const dt = moment(rawdate)
+        return dt.format('h:mm A')
       },
       formatDate (rawdate) {
-        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-          'July', 'August', 'September', 'October', 'November', 'December'
-        ]
-        const dt = new Date(rawdate)
-        const year = dt.getFullYear()
-        const month = monthNames[dt.getMonth()]
-        const dayOfM = dt.getDate()
-        return `${month} ${dayOfM}, ${year}`
+        const dt = moment(rawdate)
+        return dt.format('MMMM D, YYYY')
       }
     }
   }

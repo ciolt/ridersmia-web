@@ -1,23 +1,26 @@
 <template lang="pug">
   .single-event
     .left-sec
-      .date-time.nop.small-p
+      .date-time.nop
         b.h4 Date and time
         p(v-html="getCondenseDateTime(eventDate) + (endDate != null ? dateSep : '')")
         p(v-if="endDate" v-html="getCondenseDateTime(endDate) + ' ' + getTZ(endDate)")
-      .location.nop.small-p
+      .location.nop
         b.h4 Location
-        p(v-html="eventLocation")
-      .rsvp.nop.small-p(v-if="rsvp")
+        p
+          a(:href='googleMapsLocationURL' target='_blank' v-html='eventLocation')
+      .rsvp.nop(v-if="rsvp")
         b.h4 RSVP
         p This event requires an RSVP.
         p
           a(:href="rsvp") Register
     .right-sec.ncfp.small-p
+      b.h4 Description
       Content
 </template>
 
 <script>
+  import moment from 'moment'
   const locale = 'en-US'
   export default {
     metaInfo() {
@@ -31,6 +34,10 @@
       }
     },
     computed: {
+      googleMapsLocationURL() {
+        const query = encodeURIComponent(this.eventLocation)
+        return `https://www.google.com/maps/search/?api=1&query=${query}`
+      },
       eventLocation() {
         return this.$page.frontmatter.location
       },
@@ -49,24 +56,27 @@
     },
     methods: {
       toMonthStr (date) {
-        return date.toLocaleString(locale, {
-          month: 'short'
-        })
+        return moment(date).format('MMMM')
       },
       dateOfMonth (date) {
-        return date.getDate()
+        return moment(date).format('D')
       },
       getYear (date) {
-        return date.getFullYear()
+        return moment(date).format('YYYY')
       },
       getWeekday (date) {
-        return date.toLocaleDateString(locale, { weekday: 'short' })
+        return moment(date).format('ddd')
       },
       getTime (date) {
-        return date.toLocaleString(locale, { hour: 'numeric', minute: '2-digit', hour12: true })
+        return moment(date).format('h:mm A')
       },
       getTZ (date) {
-        return date.toLocaleString(locale, { timeZoneName: 'short' }).split(' ').pop()
+        try {
+          const a =  date.toLocaleString(locale, { timeZoneName: 'short' }).split(' ').pop()
+          return a
+        } catch (err) {
+          return 'EDT'
+        }
       },
       getCondenseDate (date) {
         return `${this.getWeekday(date)}, ${this.toMonthStr(date)} ${this.dateOfMonth(date)}, ${this.getYear(date)}`
@@ -93,12 +103,14 @@
 }
 
 .nop {
-  font-size: 1.125rem;
+  font-size: 1rem;
   margin: 0 0 1rem 0;
 }
 
 .nop p {
-  margin: 0;
+    margin: 0;
+    font-size: 1rem;
+    word-break: break-word;
 }
 
 @media screen and (max-width: 950px) {
@@ -115,10 +127,4 @@
   max-width: 635px;
 }
 
-p, .right-sec p, .ncfp p {
-    margin-top: 0;
-    font-size: 1.125rem;
-    margin: 1rem auto;
-    word-break: break-word;
-}
 </style>
