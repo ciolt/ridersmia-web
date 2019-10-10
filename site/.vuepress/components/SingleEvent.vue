@@ -21,7 +21,8 @@
 
 <script>
   import moment from 'moment'
-  const locale = 'en-US'
+  const markdownDT = 'YYYY-MM-DD HH:mm:ss Z' // 2019-10-17 22:00:00 +0000
+
   export default {
     metaInfo() {
       return {
@@ -45,30 +46,30 @@
         return !!(this.$page.frontmatter.rsvp) ? this.$page.frontmatter.rsvp_url : null
       },
       eventDate() {
-        return new Date(this.$page.frontmatter.date)
+        return moment(this.$page.frontmatter.date, markdownDT)
       },
       endDate() {
         const ut = this.$page.frontmatter.until_date
         if (ut) {
-          return new Date(ut)
+          return moment(ut, markdownDT)
         } else return null
       }
     },
     methods: {
       toMonthStr (date) {
-        return moment(date).format('MMMM')
+        return moment(date, markdownDT).format('MMM')
       },
       dateOfMonth (date) {
-        return moment(date).format('D')
+        return moment(date, markdownDT).format('D')
       },
       getYear (date) {
-        return moment(date).format('YYYY')
+        return moment(date, markdownDT).format('YYYY')
       },
       getWeekday (date) {
-        return moment(date).format('ddd')
+        return moment(date, markdownDT).format('ddd')
       },
       getTime (date) {
-        return moment(date).format('h:mm A')
+        return moment(date, markdownDT).format('h:mm A')
       },
       getTZ (date) {
         try {

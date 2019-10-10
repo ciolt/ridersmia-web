@@ -10,6 +10,7 @@
 
 <script>
   import moment from 'moment'
+  const markdownDT = 'YYYY-MM-DD HH:mm:ss Z' // 2019-10-17 22:00:00 +0000
 
   export default {
     props: {
@@ -17,11 +18,11 @@
     },
     methods: {
       formatTime (rawdate) {
-        const dt = moment(rawdate)
+        const dt = moment(rawdate, markdownDT)
         return dt.format('h:mm A')
       },
       formatDate (rawdate) {
-        const dt = moment(rawdate)
+        const dt = moment(rawdate, markdownDT)
         return dt.format('MMMM D, YYYY')
       }
     }
