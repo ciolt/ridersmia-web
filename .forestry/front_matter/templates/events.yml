@@ -39,6 +39,30 @@ fields:
   - train
   - infrastructure
 
+- type: field_group
+  name: categories
+  description: Transportation categories related to this event
+  label: Modes
+  hidden: false
+  fields:
+  - type: boolean
+    name: bus
+    default: false
+    label: Buses
+  - type: boolean
+    name: train
+    default: false
+    label: Trains
+  - type: boolean
+    name: bike
+    default: false
+    label: Bikes
+  - type: boolean
+    name: roads
+    default: false
+    label: Infrastructure
+    description: Roads, bridges, construction
+
 - type: boolean
   name: rsvp
   hidden: false
@@ -81,7 +105,7 @@ fields:
       config:
         required: true
     - type: text
-      name: email
+      name: role
       label: Role
       description: PIO, Coordinator, Director
       config:
