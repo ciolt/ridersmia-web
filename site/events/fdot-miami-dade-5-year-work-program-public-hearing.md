@@ -12,9 +12,18 @@ is_publicmtg: true
 publicmtg:
   agenda_url: http://www.fdotmiamidade.com/userfiles/files/FDOT_Program_2019_Public_Hearing_Agendas_Miami-Dade_County%2009.23.19_Revised.pdf
   contacts:
+  - name: FDOT District Six
+    role: Public Information Office
+    phone: 305-470-5349
+    email: info@fdotmiamidade.com
+  - name: Hong Benitez
+    role: FDOT District Six Title VI Coordinator
+    phone: 305-470-5291
+    email: hong.benitez@dot.state.fl.us
   - name: Gerdy St. Louis
     phone: 305-573-0089
     email: Gerdy@iscprgroup.com
+    role: Public Information Officer
 sp_notes: Presentation begins at 6:45 PM. Plan ahead to arrive by 6:00 PM or earlier,
   as transit access is limited and the FDOT District 6 office is located next to the
   Turnpike/Dolphin interchange.
@@ -29,6 +38,6 @@ Public participation is solicited without regard to race, color, national origin
 
 **HEARING AGENDA:** [http://www.fdotmiamidade.com/userfiles/files/FDOT_Program_2019_Public_Hearing_Agendas_Miami-Dade_County%2009.23.19_Revised.pdf](http://www.fdotmiamidade.com/userfiles/files/FDOT_Program_2019_Public_Hearing_Agendas_Miami-Dade_County%2009.23.19_Revised.pdf "http://www.fdotmiamidade.com/userfiles/files/FDOT_Program_2019_Public_Hearing_Agendas_Miami-Dade_County%2009.23.19_Revised.pdf")
 
-**NOTES:** Presentation begins at 6:45 PM. Plan ahead to arrive by 6:00 PM or earlier, as transit access is limited and the FDOT District 6 office is located next to the Turnpike/Dolphin interchange.
+**NOTES:** Presentation begins at 6:45 PM. Plan ahead to arrive by 6:00 PM or earlier, as transit access is limited and the FDOT District 6 office is located next to the Turnpike/Dolphin interchange
 
 [Source](http://www.fdotmiamidade.com/work-program-public-hearings.html)
