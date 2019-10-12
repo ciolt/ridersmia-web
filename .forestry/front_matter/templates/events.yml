@@ -38,7 +38,6 @@ fields:
   - bus
   - train
   - infrastructure
-
 - type: boolean
   name: rsvp
   hidden: false
