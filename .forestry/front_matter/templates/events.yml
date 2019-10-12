@@ -9,31 +9,26 @@ fields:
   type: text
   config:
     required: true
-
 - name: date
   label: Start Date
   hidden: false
   type: datetime
   config:
     required: true
-
 - name: until_date
   label: End Date
   hidden: false
   type: datetime
   config:
     required: false
-
 - type: text
   name: location
   label: Address
   description: Physical address of location (i.e. 111 NW 1st St, Miami, FL 33128)
-
 - type: image_gallery
   name: image_docs
   label: Attachments
   description: Images and/or documents related to this event
-
 - type: tag_list
   name: categories
   description: Transportation categories related to this event
@@ -43,13 +38,11 @@ fields:
   - bs: Bus
   - tr: Train
   - in: Infrastructure
-
 - type: boolean
   name: rsvp
   hidden: false
   default: false
   label: Needs RSVP?
-
 - type: text
   name: rsvp_url
   hidden: false
@@ -58,13 +51,11 @@ fields:
   showOnly:
     field: rsvp
     value: true
-
 - type: boolean
   name: is_publicmtg
   hidden: false
   default: false
   label: Is this a public meeting?
-
 - type: field_group
   name: publicmtg
   label: Public Meeting Information
@@ -101,18 +92,15 @@ fields:
         required: false
     config:
       labelField: name
-
 - type: textarea
   name: sp_notes
   label: Special Notes
   description: Transit accessible? Recommended arrival time?
   hidden: false
-
 - type: text
   name: source_url
   label: Source URL
   description: The original source of this event
   hidden: false
-
 pages:
 - site/events/fdot-miami-dade-5-year-work-program-public-hearing.md
