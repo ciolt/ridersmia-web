@@ -29,7 +29,6 @@ fields:
   name: image_docs
   label: Attachments
   description: Images and/or documents related to this event
-
 - type: field_group
   name: categories
   description: Transportation categories related to this event
@@ -53,7 +52,6 @@ fields:
     default: false
     label: Infrastructure
     description: Roads, bridges, construction
-
 - type: boolean
   name: rsvp
   hidden: false
