@@ -29,15 +29,6 @@ fields:
   name: image_docs
   label: Attachments
   description: Images and/or documents related to this event
-- type: tag_list
-  name: categories
-  description: Transportation categories related to this event
-  label: Modes
-  default:
-  - bike
-  - bus
-  - train
-  - infrastructure
 
 - type: field_group
   name: categories
