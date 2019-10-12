@@ -24,20 +24,15 @@ fields:
   config:
     required: false
 
-- type: file
-  name: thumbnail
-  label: Image
-
 - type: text
   name: location
   label: Address
   description: Physical address of location (i.e. 111 NW 1st St, Miami, FL 33128)
 
-- type: textarea
-  name: sp_notes
-  label: Special Notes
-  description: Transit accessible? Recommended arrival time?
-  hidden: false
+- type: image_gallery
+  name: image_docs
+  label: Attachments
+  description: Images and/or documents related to this event
 
 - type: tag_list
   name: categories
@@ -48,6 +43,21 @@ fields:
   - bs: Bus
   - tr: Train
   - in: Infrastructure
+
+- type: boolean
+  name: rsvp
+  hidden: false
+  default: false
+  label: Needs RSVP?
+
+- type: text
+  name: rsvp_url
+  hidden: false
+  label: RSVP link
+  description: Leave blank if no RSVP link, provide instructions in event description
+  showOnly:
+    field: rsvp
+    value: true
 
 - type: boolean
   name: is_publicmtg
@@ -92,21 +102,17 @@ fields:
     config:
       labelField: name
 
-
-- type: boolean
-  name: rsvp
+- type: textarea
+  name: sp_notes
+  label: Special Notes
+  description: Transit accessible? Recommended arrival time?
   hidden: false
-  default: false
-  label: Needs RSVP?
 
 - type: text
-  name: rsvp_url
+  name: source_url
+  label: Source URL
+  description: The original source of this event
   hidden: false
-  label: RSVP link
-  description: Leave blank if no RSVP link, provide instructions in event description
-  showOnly:
-    field: rsvp
-    value: true
 
 pages:
 - site/events/fdot-miami-dade-5-year-work-program-public-hearing.md
