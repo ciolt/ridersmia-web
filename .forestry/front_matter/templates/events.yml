@@ -34,12 +34,15 @@ fields:
   label: Modes
   config:
     source:
-      type: custom
+      type: simple
     options:
     - bike
     - bus
     - train
     - infra
+  showOnly:
+    field: rsvp
+    value: true
 - type: boolean
   name: rsvp
   hidden: false
