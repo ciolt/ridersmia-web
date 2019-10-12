@@ -39,10 +39,10 @@ fields:
   description: Transportation categories related to this event
   label: Modes
   default:
-  - bk: Bike
-  - bs: Bus
-  - tr: Train
-  - in: Infrastructure
+  - bike
+  - bus
+  - train
+  - infrastructure
 
 - type: boolean
   name: rsvp
