@@ -9,49 +9,104 @@ fields:
   type: text
   config:
     required: true
+
 - name: date
   label: Start Date
   hidden: false
   type: datetime
   config:
     required: true
+
 - name: until_date
   label: End Date
   hidden: false
   type: datetime
   config:
     required: false
+
 - type: file
   name: thumbnail
   label: Image
+
 - type: text
   name: location
   label: Address
   description: Physical address of location (i.e. 111 NW 1st St, Miami, FL 33128)
-- type: select
+
+- type: textarea
+  name: sp_notes
+  label: Special Notes
+  description: Transit accessible? Recommended arrival time?
+  hidden: false
+
+- type: tag_list
   name: categories
   description: Transportation categories related to this event
   label: Modes
-  config:
-    source:
-      type: simple
-    options:
-    - bike
-    - bus
-    - train
-    - infra
+  default:
+  - bk: Bike
+  - bs: Bus
+  - tr: Train
+  - in: Infrastructure
+
+- type: boolean
+  name: is_publicmtg
+  hidden: false
+  default: false
+  label: Is this a public meeting?
+
+- type: field_group
+  name: publicmtg
+  label: Public Meeting Information
+  hidden: false
   showOnly:
-    field: rsvp
+    field: is_publicmtg
     value: true
+  fields:
+  - type: text
+    name: agenda_url
+    label: Agenda URL
+    config:
+      required: false
+  - type: field_group_list
+    name: contacts
+    label: Contact Persons
+    description: Special contacts for this event, such as PIOs and coordinators
+    fields:
+    - type: text
+      name: name
+      label: Full Name
+      config:
+        required: true
+    - type: text
+      name: phone
+      label: Phone Number
+      description: Use the format 123-456-7890 for this field
+      config:
+        required: false
+    - type: text
+      name: email
+      label: Email Address
+      config:
+        required: false
+    config:
+      labelField: name
+
+
 - type: boolean
   name: rsvp
   hidden: false
   default: false
   label: Needs RSVP?
+
 - type: text
   name: rsvp_url
   hidden: false
   label: RSVP link
   description: Leave blank if no RSVP link, provide instructions in event description
+  showOnly:
+    field: rsvp
+    value: true
+
 pages:
 - site/events/fdot-miami-dade-5-year-work-program-public-hearing.md
