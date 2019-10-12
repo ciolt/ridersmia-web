@@ -89,6 +89,12 @@ fields:
       config:
         required: true
     - type: text
+      name: email
+      label: Role
+      description: PIO, Coordinator, Director
+      config:
+        required: false
+    - type: text
       name: phone
       label: Phone Number
       description: Use the format 123-456-7890 for this field
