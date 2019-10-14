@@ -123,4 +123,5 @@ fields:
   description: The original source of this event
   hidden: false
 pages:
+- site/events/alhambra-circle-walk-through-workshop.md
 - site/events/fdot-miami-dade-5-year-work-program-public-hearing.md
