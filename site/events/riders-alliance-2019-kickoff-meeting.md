@@ -19,6 +19,8 @@ sp_notes: ''
 source_url: ''
 
 ---
+![Illustration for this event](/upload/kickoff-max-2019.png "Illustration for this event")
+
 The first ever Riders Alliance meeting! We'll be discussing opportunities for advocacy, and ideas for the first Riders campaign.
 
 Join the video call at 6PM on October 30, 2019: [https://zoom.us/j/529171244](https://zoom.us/j/529171244 "https://zoom.us/j/529171244")
