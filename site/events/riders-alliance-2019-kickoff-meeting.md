@@ -21,6 +21,8 @@ source_url: ''
 ---
 The first ever Riders Alliance meeting! We'll be discussing opportunities for advocacy, and ideas for the first Riders campaign.
 
-Join the call at 6PM on October 30, 2019: [https://zoom.us/j/529171244](https://zoom.us/j/529171244 "https://zoom.us/j/529171244")
+Join the video call at 6PM on October 30, 2019: [https://zoom.us/j/529171244](https://zoom.us/j/529171244 "https://zoom.us/j/529171244")
 
 You can also dial **+1 646 558 8656** and enter meeting ID **529-171-244** to join the meeting with a regular phone.
+
+**Agenda:** [https://riders.miami/upload/2019-Kickoff-Meeting.pdf](https://riders.miami/upload/2019-Kickoff-Meeting.pdf "https://riders.miami/upload/2019-Kickoff-Meeting.pdf")
