@@ -28,3 +28,11 @@ Join the video call at 6PM on October 30, 2019: [https://zoom.us/j/529171244](ht
 You can also dial **+1 646 558 8656** and enter meeting ID **529-171-244** to join the meeting with a regular phone.
 
 **Agenda:** [https://riders.miami/upload/2019-Kickoff-Meeting.pdf](https://riders.miami/upload/2019-Kickoff-Meeting.pdf "https://riders.miami/upload/2019-Kickoff-Meeting.pdf")
+
+**President's Notes:** [https://riders.miami/upload/2019-Kickoff-Notes.pdf](https://riders.miami/upload/2019-Kickoff-Notes.pdf "https://riders.miami/upload/2019-Kickoff-Notes.pdf")
+
+**Board Members:**
+
+President, Alejandra Agredo - Present  
+Vice President, Kevin Amezaga - Present  
+COO, Orion Zamparello - Absent
