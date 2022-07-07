@@ -7,7 +7,7 @@
   "author": "The Riders Alliance",
   "license": "MIT",
   "dependencies": {
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
     "vue-meta": "^2.3.0",
